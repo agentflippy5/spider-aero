@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <script
+                        src="https://code.jquery.com/jquery-3.3.1.min.js"
+                        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                        crossorigin="anonymous">
+                </script>
+                <style>
+                        body{
+                                background-color: black;
+                                cursor: none;
+                        }
+                        pre{
+                                color: red;
+                                padding: 0px;
+                                margin: 0px;
+                        }
+                        .yellow{
+                                color: red;
+                        }
+                        .brown{
+                                color: red;
+                        }
+                </style>
+        </head>
+<body>
+
+
+
+
+
+<script>
+var list = "                   ,,,, $             ,;) .';;;;',$ ;;,,_,-.-.,;;'_,|I\\;;;/),,_$  `';;/:|:);{ ;;;|| \\;/ /;;;\\__$      L;/-';/ \\;;\\',/;\\/;;;.') \\$      .:`''` - \\;;'.__/;;;/  . _'-._$    .'/   \\     \\;;;;;;/.'_7:.  '). \\_$  .''/     | '._ );}{;//.'    '-:  '.,L$.'. /       \\  ( |;;;/_/         \\._./;\\   _,$ . /        |\\ ( /;;/_/             ';;;\\,;;_,$. /         )__(/;;/_/                (;;'''''$ /        _;:':;;;;:';-._             );$/        /   \\  `'`   --.'-._         \\/$       .'     '.  ,'         '-,$      /    /   r--,..__       '.\\$    .'    '  .'        '--._     ]$    (     :.(;>        _ .' '- ;/$    |      /:;(    ,_.';(   __.'$     '- -'\\\"|;:/    (;;;;-'--'$           |;/      ;;($           ''      /;;|$                   \\;;|$                    \\/$$$    @@          @@$    @@@        @@@$    @@@@      @@@@   @@@@  @@ @@@  @@ @@@ @@      @@$    @@ @@    @@ @@  @@  @@ @@@  @@ @@@  @@ @@    @@$    @@  @@  @@  @@ @@@@@@  @@      @@       @@  @@$    @@   @@@@   @@  @@     @@      @@        @@@@$    @@    @@    @@   @@@@  @@      @@         @@$                                             @@$                                        @@  @@$                                         @@@@$   @@@   @@              @@          @@$ @@   @@ @@                          @@$@@       @@ @@@  @@ @@@  @@   @@@@ @@@@@@  @@ @@  @@      @@@    @@@@$@@       @@@  @@ @@@  @@ @@  @@      @@    @@@  @@  @@  @@  @@  @@$@@       @@   @@ @@      @@   @@@    @@    @@   @@  @@ @@   @@   @@@$ @@   @@ @@   @@ @@      @@     @@   @@ @@ @@       @@ @@   @@     @@$   @@@   @@   @@ @@       @@ @@@@     @@   @@       @@  @@@@ @@ @@@@";
+list = list.split("$");
+var speed = 20;
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+function typeWriter(txt, id, i) {
+  if (i < txt.length) {
+    document.getElementById(id).innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(function(){
+            typeWriter(txt, id, i);
+    }, speed);
+  }
+}
+
+
+async function main(){
+        await delay(5000);
+        for (var x = 0; x < list.length; x++){
+                var i = 0;
+                if (x < 3){
+                        $("body").append("<pre class='yellow' id='" + x + "'></pre>");
+                }
+                else if (x > 21){
+                        $("body").append("<pre class='brown' id='" + x + "'></pre>");
+                }
+                else{
+                        $("body").append("<pre id='" + x + "'></pre>");
+                }
+                typeWriter(list[x], x, i);
+                await delay(500);
+        }
+        await delay(15000);
+        $("body").append("<br>");
+        $("body").append("<br>");
+        $("body").append("<pre id='sudo'></pre>");
+        typeWriter("> sudo be_merry.sh", "sudo", 0);
+}
+
+
+main();
+
+</script>
+
+</body>
+</html>
